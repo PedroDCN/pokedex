@@ -1,25 +1,7 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-
-const getApiURLbyPokemon = (id: string | number) =>
-  `https://pokeapi.co/api/v2/pokemon/${id}/`;
+import { usePokemon } from "../../contexts/PokemonContext";
 
 export default function Home() {
-  const [pokemons, setPokemons] = useState<any>({});
-
-  const getPokemon = async (id: string | number) =>
-    axios
-      .get(getApiURLbyPokemon(id))
-      .then((response) => response.data)
-      .then((pokemon: any) =>
-        setPokemons((CurrPokemons: any) => ({ ...CurrPokemons, [id]: pokemon }))
-      );
-
-  useEffect(() => {
-    for (let i = 1; i <= 151; i++) {
-      getPokemon(i);
-    }
-  }, []);
+  const { pokemons } = usePokemon();
 
   return (
     <>
