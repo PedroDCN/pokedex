@@ -6,7 +6,7 @@ import Home from "./routes/Home/index.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/pokedex/",
     element: <App />,
     children: [{ index: true, element: <Home /> }],
   },
